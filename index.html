@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Tirar Foto</title>
+</head>
+<body>
+    <h1>Tirar Foto</h1>
+    <p>Clique no botão abaixo para ativar a câmera.</p>
+
+    <video id="video" width="320" height="240" autoplay></video>
+    <br><br>
+    <button id="start">Ativar câmera</button>
+
+    <script>
+        document.getElementById("start").onclick = async () => {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true });
+                document.getElementById("video").srcObject = stream;
+            } catch (err) {
+                alert("Permissão negada ou erro ao acessar a câmera.");
+            }
+        };
+    </script>
+</body>
+</html>
